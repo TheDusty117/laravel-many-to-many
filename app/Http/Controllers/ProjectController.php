@@ -110,12 +110,21 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
+        // dd($data);
 
         if($data['title'] !== $project->title){
             $data['slug'] = Str::slug($data['title']);
         }
 
         $project->update($data);
+
+        //controllo se preesistono dei technologies checkati
+        if (isset($data['technologies'])){
+
+            $project->technologies()->sync($data['technologies']);
+
+        }
+
 
         return to_route('projects.show', $project);
 
