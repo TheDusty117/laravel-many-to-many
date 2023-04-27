@@ -29,7 +29,7 @@ class Project extends Model
 
     //su questo model creo la relazione, a molti!
     public function technologies() {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Technology::class);
     }
 
 }

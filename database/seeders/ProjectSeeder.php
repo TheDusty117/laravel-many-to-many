@@ -25,9 +25,9 @@ class ProjectSeeder extends Seeder
         $category_ids = Category::all()->pluck('id')->all(); // [1,2,3,4,5,6]
 
         //recupero techonologies per poterle usare
-        $technology_ids = Tag::all()->pluck('id')->all();
+        $technology_ids = Technology::all()->pluck('id')->all();
 
-        for ($i=0; $i < 20; $i++) {
+        for ($i=0; $i < 40; $i++) {
 
             $project = new Project();
             $project->title = $faker->sentence( $faker->numberBetween(3,5) );
@@ -37,6 +37,11 @@ class ProjectSeeder extends Seeder
             $project->category_id = $faker->optional()->randomElement($category_ids);
 
             $project->save();
+
+            //recupero la relazione che ci restutisce retunr this->belongsTomany(Techonology::class)
+            //quindi un'istanza di una classe
+            //randomizzo l'elenco di tecnologie
+            $project->technologies()->attach($faker->randomElements($technology_ids));
 
         }
     }
