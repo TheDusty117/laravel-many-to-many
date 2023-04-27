@@ -26,4 +26,10 @@ class Project extends Model
         return $this->belongsTo(Category::class);
     }
 
+
+    //su questo model creo la relazione, a molti!
+    public function technologies() {
+        return $this->belongsToMany(Tag::class);
+    }
+
 }
