@@ -60,6 +60,31 @@
 
             </div>
 
+            {{-- select delle tecnologie --}}
+            <div class="mb-3">
+                <label for="technologies">Tecnologie</label>
+                <div class="form-check">
+                    <input name="technologies[]" class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      HTML
+                    </label>
+                  </div>
+
+                  <div class="form-check">
+                    <input name="technologies[]" class="form-check-input" type="checkbox" value="2" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      CSS
+                    </label>
+                  </div>
+
+                @error('category_id')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+
+            </div>
+
 
             <div class="mb-3">
               <label for="description" class="form-label">Descrizione</label>

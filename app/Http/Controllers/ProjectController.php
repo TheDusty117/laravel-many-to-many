@@ -42,6 +42,7 @@ class ProjectController extends Controller
     public function create()
     {
         $categories = Category::orderBy('name','asc')->get();
+        $technologies = Technology::orderBy('name','asc')->get();
 
         return view('projects.create', compact('categories'));
     }
@@ -85,8 +86,10 @@ class ProjectController extends Controller
     {
 
         $categories = Category::orderBy('name','asc')->get();
+        $technologies = Technology::orderBy('name','asc')->get();
 
-        return view('projects.edit',compact('project','categories'));
+
+        return view('projects.edit',compact('project','categories','technologies'));
     }
 
     /**
