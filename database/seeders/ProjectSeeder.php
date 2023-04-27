@@ -36,7 +36,6 @@ class ProjectSeeder extends Seeder
             $project->slug = Str::slug($project->title, '-');
             $project->category_id = $faker->optional()->randomElement($category_ids);
 
-
             $project->save();
 
         }
