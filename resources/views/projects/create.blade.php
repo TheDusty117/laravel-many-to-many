@@ -63,19 +63,21 @@
             {{-- select delle tecnologie --}}
             <div class="mb-3">
                 <label for="technologies">Tecnologie</label>
-                <div class="form-check">
-                    <input name="technologies[]" class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      HTML
-                    </label>
-                  </div>
 
-                  <div class="form-check">
-                    <input name="technologies[]" class="form-check-input" type="checkbox" value="2" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      CSS
-                    </label>
-                  </div>
+                <div class="d-flex @error('technologies') is-invalid @enderror gap-3">
+                    @foreach ($technologies as $technology)
+
+                    <div class="form-check">
+                        <input name="technologies[]" @checked( in_array($technology->id, old('technologies',[])) ) class="form-check-input" type="checkbox" value="{{ $technology->id }}" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          {{$technology->name}}
+                        </label>
+                    </div>
+
+                    @endforeach
+                </div>
+
+
 
                 @error('category_id')
                     <div class="invalid-feedback">

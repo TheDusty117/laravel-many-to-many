@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Category;
+use App\Models\Technology;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 // importo le categorie
-use App\Models\Category;
+
 
 
 class ProjectController extends Controller
@@ -44,7 +46,7 @@ class ProjectController extends Controller
         $categories = Category::orderBy('name','asc')->get();
         $technologies = Technology::orderBy('name','asc')->get();
 
-        return view('projects.create', compact('categories'));
+        return view('projects.create', compact('categories','technologies'));
     }
 
     /**
@@ -61,6 +63,12 @@ class ProjectController extends Controller
         $data['slug'] = Str::slug( $data['title'] );
 
         $project = Project::create($data);
+
+        //attach che passa array di tecnologie
+        //con controllo se ci sia
+        if (isset($data['technologies'])){
+            $project->technologies()->attach($data['technologies']);
+        }
 
         return to_route('projects.show', $project);
     }

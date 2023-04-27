@@ -17,7 +17,19 @@
 
                 <p>{{ $project->slug }}</p>
 
+
+                {{-- VISUALIZZAZIONE DELLE TECNOLOGIE --}}
+                <ul class="ps-0 d-flex gap-1">
+                    @forelse($project->technologies as $technology )
+                        <span class="badge rounded-pill text-bg-light">{{ $technology->name }}</span>
+                    @empty
+                        -
+                    @endforelse
+                </ul>
+
             </div>
+
+
 
             <div>
                 <a class="btn btn-sm btn-secondary" href="{{ route('projects.edit',$project) }}">
