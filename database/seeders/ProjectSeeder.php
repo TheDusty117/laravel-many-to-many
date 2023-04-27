@@ -41,7 +41,7 @@ class ProjectSeeder extends Seeder
             //recupero la relazione che ci restutisce retunr this->belongsTomany(Techonology::class)
             //quindi un'istanza di una classe
             //randomizzo l'elenco di tecnologie
-            $project->technologies()->attach($faker->randomElements($technology_ids));
+            $project->technologies()->attach($faker->randomElements($technology_ids, rand(0, 10) ) );
 
         }
     }

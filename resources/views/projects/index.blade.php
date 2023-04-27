@@ -42,6 +42,15 @@
                             <a href="{{ route('projects.show',$project) }}">{{ $project->title }}</a>
                         </td>
                         <td>{{ $project->category ? $project->category->name : '-'}}</td>
+
+                        <ul class="ps-0 d-flex gap-1">
+                            @forelse ($project->technologies as $technology)
+                                <span class="badge rounded-pill text-bg-light"> {{ $technology->name }} </span>
+                            @empty
+                                -
+                            @endforelse
+                        </ul>
+
                         <td>{{ $project->client }}</td>
                         <td>{{ $project->description }}</td>
                         <td>{{ $project->slug }}</td>

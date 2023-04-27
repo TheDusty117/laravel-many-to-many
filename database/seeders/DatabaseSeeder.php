@@ -24,8 +24,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             CategorySeeder::class,
-            ProjectSeeder::class,
             TechnologySeeder::class,
+            ProjectSeeder::class,
         ]);
     }
 }
+// lanciare seeder sempre nell'ordine giusto!!!
