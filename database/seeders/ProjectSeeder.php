@@ -43,6 +43,10 @@ class ProjectSeeder extends Seeder
             //randomizzo l'elenco di tecnologie
             $project->technologies()->attach($faker->randomElements($technology_ids, rand(0, 10) ) );
 
+
+            //CORRETTO RIPOPOLAMENTO DEL DB MYADMIN!!!!!!!!!!!!!
+            //1 php artisan migrate:refresh
+            //2 php artisan db:seed
         }
     }
 }
