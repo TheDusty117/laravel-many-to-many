@@ -25,13 +25,14 @@
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
+                    <th>Categories</th>
+                    <th>Technologies</th>
                     <th>Client</th>
                     <th>Description</th>
-                    <th>Slug</th>
+                    <th>Slugs</th>
                     <th>Data creazione</th>
                     <th>Data modifica</th>
                     <th>Eliminato</th>
-                    <th>Tasti</th>
                 </tr>
             </thead>
             <tbody>

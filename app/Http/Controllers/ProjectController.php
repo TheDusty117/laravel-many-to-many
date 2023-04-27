@@ -122,7 +122,8 @@ class ProjectController extends Controller
         if (isset($data['technologies'])){
 
             $project->technologies()->sync($data['technologies']);
-
+        } else {
+            $project->technologies()->sync([]);
         }
 
 
@@ -152,6 +153,10 @@ class ProjectController extends Controller
     {
 
         if ($project->trashed()) {
+
+            //rimuove tutti i techs per eliminare
+            // $project->technologies()->detach();
+
             $project->forceDelete(); // eliminazione def
         } else {
             $project->delete(); //eliminazione soft
